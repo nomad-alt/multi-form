@@ -1,21 +1,25 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import FirstStep from "./FirstStep";
-import SecondStep from "./SecondStep";
-import Result from "./Result";
+import { ChakraProvider } from "@chakra-ui/react";
+import { FormProvider } from "./FormContext";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Step3 from "./Step3";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" exact element={<FirstStep />} />
-          <Route path="/step2" element={<SecondStep />} />
-          <Route path="/result" element={<Result />} />
-        </Routes>
-      </Router>
-    </>
+    <ChakraProvider>
+      <FormProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Step1 />} />
+            <Route path="/step1" element={<Step1 />} />
+            <Route path="/step2" element={<Step2 />} />
+            <Route path="/step3" element={<Step3 />} />
+          </Routes>
+        </Router>
+      </FormProvider>
+    </ChakraProvider>
   );
-}
+};
 
 export default App;
